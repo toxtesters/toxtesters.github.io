@@ -88,3 +88,32 @@ table {
     border-radius: 8px;
     overflow: hidden;
 }
+
+/* Add a responsive wrapper that allows horizontal scroll on small screens */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    /* Smooth scrolling on iOS devices */
+}
+
+.table-responsive table {
+    min-width: 600px;
+    /* Adjust to a suitable minimum width */
+}
+
+/* Optionally reduce padding or font sizes on smaller screens */
+@media (max-width: 480px) {
+    body {
+        padding: 1rem;
+    }
+
+    thead th,
+    tbody td {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .site-title {
+        font-size: 1.5rem;
+    }
+}
