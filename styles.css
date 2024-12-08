@@ -5,26 +5,48 @@ body {
     background: #f9f9f9;
     color: #333;
     line-height: 1.5;
+    box-sizing: border-box;
+}
+
+/* Ensure all elements share the same box-sizing */
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
 }
 
 header {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
     margin-bottom: 2rem;
 }
 
-.logo {
-    width: 120px;
-    height: 120px;
+.logo-container {
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    margin-bottom: 1rem;
+    object-position: center;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
 }
 
 .site-title {
     font-size: 2rem;
     margin: 0 0 0.5rem 0;
+    line-height: 1.2;
 }
 
 .site-description {
@@ -48,10 +70,19 @@ header {
     padding-bottom: 0.5rem;
 }
 
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
 table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
+    min-width: 600px;
+    /* Ensures table scrolls if screen is too narrow */
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 thead th {
@@ -61,6 +92,7 @@ thead th {
     padding: 0.75rem;
     font-weight: normal;
     font-size: 1rem;
+    white-space: nowrap;
 }
 
 tbody td {
@@ -83,37 +115,28 @@ table a:hover {
     text-decoration: underline;
 }
 
-/* Rounded corners for table */
-table {
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-/* Add a responsive wrapper that allows horizontal scroll on small screens */
-.table-responsive {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    /* Smooth scrolling on iOS devices */
-}
-
-.table-responsive table {
-    min-width: 600px;
-    /* Adjust to a suitable minimum width */
-}
-
-/* Optionally reduce padding or font sizes on smaller screens */
-@media (max-width: 480px) {
+/* Responsive adjustments */
+@media (max-width: 600px) {
     body {
         padding: 1rem;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .site-title {
+        font-size: 1.75rem;
+    }
+
+    .site-description {
+        font-size: 0.95rem;
     }
 
     thead th,
     tbody td {
         padding: 0.5rem;
         font-size: 0.9rem;
-    }
-
-    .site-title {
-        font-size: 1.5rem;
     }
 }
